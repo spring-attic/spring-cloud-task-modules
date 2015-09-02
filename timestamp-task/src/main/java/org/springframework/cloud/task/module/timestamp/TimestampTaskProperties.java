@@ -15,8 +15,8 @@
 
 package org.springframework.cloud.task.module.timestamp;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.util.Assert;
 
 /**
  * @author Glenn Renfro
@@ -28,12 +28,12 @@ public class TimestampTaskProperties {
 	 */
 	private String format  = "yyyy-MM-dd HH:mm:ss.SSS";
 
+	@NotBlank(message = "format must not be empty nor null")
 	public String getFormat() {
 		return format;
 	}
 
 	public void setFormat(String format) {
-		Assert.hasText(format, "format must not be empty nor null");
 		this.format = format;
 	}
 }

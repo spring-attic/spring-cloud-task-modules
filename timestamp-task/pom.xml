@@ -16,7 +16,6 @@
 	<description>Spring Cloud Stream timestamp task</description>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>org.springframework.cloud.task.module.timestamp.TimestampTaskApplication</start-class>
 	</properties>
 

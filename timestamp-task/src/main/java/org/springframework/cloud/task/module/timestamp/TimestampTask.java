@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.StepContribution;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
@@ -40,6 +41,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Glenn Renfro.
  */
 @Configuration
+@EnableBatchProcessing
 @EnableConfigurationProperties({ TimestampTaskProperties.class })
 public class TimestampTask {
 

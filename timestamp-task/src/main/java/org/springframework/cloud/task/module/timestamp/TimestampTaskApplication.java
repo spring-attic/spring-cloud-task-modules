@@ -15,7 +15,6 @@
  */
 package org.springframework.cloud.task.module.timestamp;
 
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -25,7 +24,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Glenn Renfro
  */
 @SpringBootApplication
-@EnableBatchProcessing
 public class TimestampTaskApplication {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.exit(SpringApplication.run(TimestampTaskApplication.class, args));

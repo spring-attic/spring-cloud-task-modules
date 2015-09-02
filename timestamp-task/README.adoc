@@ -1,26 +1,27 @@
-Timestamp Job
-============================
+= Timestamp Job
 
 This module executes a Spring Batch Job Tasklet that logs a timestamp.
 
-## Requirements:
+== Requirements:
 
 * Java 7 or Above
 * Redis running on localhost
 
-## Classes:
+== Classes:
 
 * TimestampApplication - the Spring Boot Main Application
 * TimestampTask - the module that writes the log entry as Spring Batch Tasklet
 
-## Build:
+== Build:
 
-```
+[source,shell,indent=2]
+----
 $ mvn clean package
-```
+----
 
-## Run:
+== Run:
 
-```
+[source,shell,indent=2]
+----
 $ java -jar target/timestamp-task-1.0.0.BUILD-SNAPSHOT-exec.jar
-```
+----
