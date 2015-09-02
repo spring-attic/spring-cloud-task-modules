@@ -18,6 +18,7 @@ package org.springframework.cloud.task.module.timestamp;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.EnvironmentTestUtils;

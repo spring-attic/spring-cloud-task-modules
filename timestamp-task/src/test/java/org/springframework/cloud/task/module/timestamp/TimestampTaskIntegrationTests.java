@@ -20,6 +20,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
 import org.junit.Test;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.OutputCapture;
 
