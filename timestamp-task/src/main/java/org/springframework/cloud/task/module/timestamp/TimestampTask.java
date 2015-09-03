@@ -60,8 +60,7 @@ public class TimestampTask {
 	protected Tasklet tasklet() {
 		return new Tasklet() {
 			@Override
-			public RepeatStatus execute(StepContribution contribution,
-										ChunkContext context) {
+			public RepeatStatus execute(StepContribution contribution, ChunkContext context) {
 				DateFormat dateFormat = new SimpleDateFormat(config.getFormat());
 				logger.info(dateFormat.format(new Date()));
 				return RepeatStatus.FINISHED;

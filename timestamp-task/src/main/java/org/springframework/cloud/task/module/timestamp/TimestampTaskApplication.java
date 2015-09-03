@@ -26,6 +26,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TimestampTaskApplication {
 	public static void main(String[] args) throws Exception {
-		SpringApplication.exit(SpringApplication.run(TimestampTaskApplication.class, args));
+		SpringApplication.run(TimestampTaskApplication.class, args);
 	}
 }

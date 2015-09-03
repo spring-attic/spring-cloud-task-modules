@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>spring-cloud-task-modules</artifactId>
 		<groupId>org.springframework.cloud.task.module</groupId>
-		<version>1.0.0.BUILD-SNAPSHOT</version>
+		<version>${task-modules-version}</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +13,7 @@
 	<artifactId>timestamp-task</artifactId>
 	<packaging>jar</packaging>
 	<name>timestamp-task</name>
-	<description>Spring Cloud Stream timestamp task</description>
+	<description>Spring cloud timestamp task</description>
 
 	<properties>
 		<start-class>org.springframework.cloud.task.module.timestamp.TimestampTaskApplication</start-class>
@@ -40,6 +40,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 			<version>${cloud-config.version}</version>
+		</dependency>
+		<!-- For JSR303 Validation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
 		</dependency>
 	</dependencies>
 

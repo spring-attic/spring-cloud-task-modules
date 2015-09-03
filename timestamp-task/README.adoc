@@ -5,7 +5,6 @@ This module executes a Spring Batch Job Tasklet that logs a timestamp.
 == Requirements:
 
 * Java 7 or Above
-* Redis running on localhost
 
 == Classes:
 
