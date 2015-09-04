@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.cloud.task.module</groupId>
 	<artifactId>spring-cloud-task-modules</artifactId>
-	<version>${task-modules-version}</version>
+	<version>1.0.0.BUILD-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 	<url>http://projects.spring.io/spring-xd/</url>
@@ -23,7 +23,6 @@
 		<java.version>1.7</java.version>
 		<spring-cloud-lattice.version>1.0.0.BUILD-SNAPSHOT</spring-cloud-lattice.version>
 		<cloud-config.version>1.0.2.RELEASE</cloud-config.version>
-		<task-modules-version>1.0.0.BUILD-SNAPSHOT</task-modules-version>
 	</properties>
 
 	<modules>
