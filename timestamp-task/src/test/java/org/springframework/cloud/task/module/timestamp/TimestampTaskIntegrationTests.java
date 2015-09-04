@@ -36,7 +36,8 @@ public class TimestampTaskIntegrationTests {
 	@Test
 	public void testOverride() throws Exception {
 		final String TEST_DATE_DOTS = ".......";
-		final String SUCCESS_MESSAGE = "-format=yyyy.......}] and the following status: [COMPLETED]";
+		final String FORMAT_MESSAGE = "-format=yyyy.......";
+		final String SUCCESS_MESSAGE = "}] and the following status: [COMPLETED]";
 		String[] args = { "--next", "--format=yyyy" + TEST_DATE_DOTS };
 
 		assertEquals(0, SpringApplication.exit(SpringApplication
@@ -44,7 +45,9 @@ public class TimestampTaskIntegrationTests {
 		String output = this.outputCapture.toString();
 		assertTrue("Unable to find the timestamp: " + output,
 				output.contains(TEST_DATE_DOTS));
-		assertTrue("Test results do not show successful build run: " + output,
+		assertTrue("Test results do not show format property: " + output,
+				output.contains(FORMAT_MESSAGE));
+		assertTrue("Test results do not show success message: " + output,
 				output.contains(SUCCESS_MESSAGE));
 	}
 }

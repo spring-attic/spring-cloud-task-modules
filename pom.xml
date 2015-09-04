@@ -85,6 +85,12 @@
 			<artifactId>spring-cloud-spring-service-connector</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- Enable Cloud Config for Task Modules -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<version>${cloud-config.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
