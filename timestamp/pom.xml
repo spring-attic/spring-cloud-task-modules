@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.springframework.cloud.task.module</groupId>
-	<artifactId>timestamp</artifactId>
+	<artifactId>timestamp-task</artifactId>
 	<packaging>jar</packaging>
 	<name>timestamp-task</name>
 	<version>1.0.0.BUILD-SNAPSHOT</version>
@@ -52,6 +52,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<classifier>exec</classifier>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
