@@ -22,12 +22,27 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
 		<spring.cloud.task.core.version>1.0.0.BUILD-SNAPSHOT</spring.cloud.task.core.version>
+		<spark.version>1.5.2</spark.version>
 	</properties>
 
 	<modules>
+		<module>common</module>
 		<!-- tasks in alphabetical order -->
+		<module>sparkapp-client</module>
+		<module>sparkapp-cluster</module>
+		<module>sparkapp-yarn</module>
 		<module>timestamp</module>
 	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud.task.module</groupId>
+				<artifactId>spring-cloud-task-modules-common-configuration</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
