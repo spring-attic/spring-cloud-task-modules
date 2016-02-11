@@ -1,0 +1,34 @@
+= Sqoop Tool Task
+
+This is a Spring Cloud Task application that executes a Sqoop Job.
+
+== Requirements:
+
+* Java 7 or Above
+
+== Build:
+
+[source,shell,indent=2]
+----
+$ ./mvnw clean package
+----
+
+== Run:
+
+NOTE: Although this app is packaged as a Spring Boot executable jar, you can't run it using `java -jar`. It must first be extracted.
+
+Extract the executable jar using:
+
+[source,shell,indent=2]
+----
+$ unzip sqoop-job/target/sqoop-job-task-1.0.0.BUILD-SNAPSHOT-exec.jar -d target
+----
+
+NOTE: You must run this app using Java of the same or lower version of Java that Hadoop is running with.
+
+Run the app using (adjust hosts, paths etc.):
+
+[source,shell,indent=2]
+----
+$ java -cp target org.springframework.boot.loader.JarLauncher --metastore-url=jdbc:hsqldb:hsql://localhost:16000/sqoop --metastore-username=sa --action=create --job-name=myjob --command=import --connect="jdbc:mysql://localhost:3306/test" --username=spring --password=spring --tool-args='--table FOO -m 1' --spring.hadoop.fsUri=hdfs://localhost:8020 --spring.hadoop.resourceManagerHost=localhost --spring.hadoop.resourceManagerPort=8032 --spring.hadoop.jobHistoryAddress=localhost:10020
+----

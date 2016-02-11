@@ -31,6 +31,8 @@
 		<module>sparkapp-client</module>
 		<module>sparkapp-cluster</module>
 		<module>sparkapp-yarn</module>
+		<module>sqoop-job</module>
+		<module>sqoop-tool</module>
 		<module>timestamp</module>
 	</modules>
 
@@ -39,6 +41,12 @@
 			<dependency>
 				<groupId>org.springframework.cloud.task.module</groupId>
 				<artifactId>spring-cloud-task-modules-common-configuration</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud.task.module</groupId>
+				<artifactId>spring-cloud-task-modules-common-configuration</artifactId>
+				<classifier>tests</classifier>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
