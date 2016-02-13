@@ -28,6 +28,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.cloud.task.sqoop.common.SqoopCommonRunnerUtils;
 import org.springframework.util.StringUtils;
 
 /**
@@ -99,15 +100,7 @@ public class SqoopJobRunner implements CommandLineRunner {
 			finalArguments.add(Jars.getJarPathForClass(Jars.class)
 					.substring(0, Jars.getJarPathForClass(Jars.class).lastIndexOf("/")));
 		}
-		if (StringUtils.hasText(props.getConnect())) {
-			finalArguments.add("--connect=" + props.getConnect());
-			if (StringUtils.hasText(props.getUsername())) {
-				finalArguments.add("--username=" + props.getUsername());
-			}
-			if (StringUtils.hasText(props.getPassword())) {
-				finalArguments.add("--password=" + props.getPassword());
-			}
-		}
+		SqoopCommonRunnerUtils.setConnectProperties(props, finalArguments);
 		List<String> toolArguments = new ArrayList<String>();
 		if (StringUtils.hasText(props.getToolArgs())) {
 			String[] args = props.getToolArgs().split("\\s+");

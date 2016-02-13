@@ -28,6 +28,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.cloud.task.sqoop.common.SqoopCommonRunnerUtils;
 import org.springframework.util.StringUtils;
 
 /**
@@ -73,15 +74,7 @@ public class SqoopToolRunner implements CommandLineRunner {
 		List<String> finalArguments = new ArrayList<String>();
 		String command = props.getCommand();
 		finalArguments.add(command);
-		if (StringUtils.hasText(props.getConnect())) {
-			finalArguments.add("--connect=" + props.getConnect());
-			if (StringUtils.hasText(props.getUsername())) {
-				finalArguments.add("--username=" + props.getUsername());
-			}
-			if (StringUtils.hasText(props.getPassword())) {
-				finalArguments.add("--password=" + props.getPassword());
-			}
-		}
+		SqoopCommonRunnerUtils.setConnectProperties(props, finalArguments);
 		if (command.toLowerCase().startsWith("import") || command.toLowerCase().startsWith("export")) {
 			finalArguments.add("--hadoop-mapred-home=" + Jars.getJarPathForClass(Jars.class)
 					.substring(0, Jars.getJarPathForClass(Jars.class).lastIndexOf("/")));

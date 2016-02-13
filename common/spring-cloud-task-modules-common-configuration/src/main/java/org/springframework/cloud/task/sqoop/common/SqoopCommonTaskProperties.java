@@ -56,6 +56,11 @@ public class SqoopCommonTaskProperties {
 	String password;
 
 	/**
+	 * The database password-file to use.
+	 */
+	String passwordFile;
+
+	/**
 	 * The Sqoop specific job arguments as a complete String, passed as is to the command job.
 	 */
 	private String toolArgs;
@@ -98,6 +103,14 @@ public class SqoopCommonTaskProperties {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordFile() {
+		return passwordFile;
+	}
+
+	public void setPasswordFile(String passwordFile) {
+		this.passwordFile = passwordFile;
 	}
 
 	public String getToolArgs() {
