@@ -16,13 +16,17 @@
 
 package org.springframework.cloud.task.timestamp;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-
 import org.junit.Rule;
 import org.junit.Test;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.OutputCapture;
+import org.springframework.cloud.task.repository.TaskExplorer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.domain.PageRequest;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * Verifies that the Task Application outputs the correct task log entries.
@@ -39,10 +43,14 @@ public class TaskApplicationTests {
 		final String TEST_DATE_DOTS = ".......";
 		final String CREATE_TASK_MESSAGE = "Creating: TaskExecution{executionId=";
 		final String UPDATE_TASK_MESSAGE = "Updating: TaskExecution with executionId=1 with the following";
-		String[] args = { "--format=yyyy" + TEST_DATE_DOTS };
+		String[] args = { "--format=yyyy" + TEST_DATE_DOTS,
+			"--spring.cloud.task.closecontext.enable=false"};
 
-		assertEquals(0, SpringApplication.exit(SpringApplication
-				.run(TaskApplication.class, args)));
+		ConfigurableApplicationContext applicationContext = SpringApplication.run(TaskApplication.class, args);
+
+		TaskExplorer taskExplorer = applicationContext.getBean(TaskExplorer.class);
+
+		assertEquals(0, (int) taskExplorer.findTaskExecutionsByName("timestamp", new PageRequest(0, 10)).getContent().get(0).getExitCode());
 
 		String output = this.outputCapture.toString();
 		assertTrue("Unable to find the timestamp: " + output,
@@ -52,5 +60,4 @@ public class TaskApplicationTests {
 		assertTrue("Test results do not show success message: " + output,
 				output.contains(UPDATE_TASK_MESSAGE));
 	}
-
 }
