@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 the original author or authors.
+ * Copyright 2015-2016 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,7 @@ public class TimestampTaskPropertiesTests {
 		TimestampTaskProperties properties = context.getBean(TimestampTaskProperties.class);
 		assertEquals("result does not match default format.", "yyyy-MM-dd HH:mm:ss.SSS",
 				properties.getFormat());
+		context.close();
 	}
 
 	@Test
@@ -59,6 +60,31 @@ public class TimestampTaskPropertiesTests {
 		properties.setFormat(FORMAT);
 		assertEquals("result does not match established format.", FORMAT,
 				properties.getFormat());
+		context.close();
+	}
+
+	@Test
+	public void testRepeatDefault() {
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.register(Conf.class);
+		context.refresh();
+		TimestampTaskProperties properties = context.getBean(TimestampTaskProperties.class);
+		assertEquals("result does not match default format.", 1,
+				properties.getRepeat());
+		context.close();
+	}
+
+	@Test
+	public void testRepeatSet() {
+		final int REPEAT = 1;
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.register(Conf.class);
+		context.refresh();
+		TimestampTaskProperties properties = context.getBean(TimestampTaskProperties.class);
+		properties.setRepeat(REPEAT);
+		assertEquals("result does not match established format.", REPEAT,
+				properties.getRepeat());
+		context.close();
 	}
 
 	@Configuration

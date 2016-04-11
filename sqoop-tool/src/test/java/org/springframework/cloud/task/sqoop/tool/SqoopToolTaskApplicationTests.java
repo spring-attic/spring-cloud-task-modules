@@ -73,7 +73,8 @@ public abstract class SqoopToolTaskApplicationTests {
 		System.setProperty("sqoop.test.dir", testDir);
 	}
 
-	@IntegrationTest({"spring.hadoop.fsUri=file:///",
+	@IntegrationTest({"spring.cloud.task.closecontext.enable:false",
+			"spring.hadoop.fsUri=file:///",
 			"spring.hadoop.config.mapreduce.framework.name=local",
 			"connect=jdbc:hsqldb:hsql://localhost:${db.server.port}/test",
 			"username=sa",
@@ -98,7 +99,8 @@ public abstract class SqoopToolTaskApplicationTests {
 		}
 	}
 
-	@IntegrationTest({"spring.hadoop.fsUri=file:///",
+	@IntegrationTest({"spring.cloud.task.closecontext.enable:false",
+			"spring.hadoop.fsUri=file:///",
 			"spring.hadoop.config.mapreduce.framework.name=local",
 			"connect=jdbc:hsqldb:hsql://localhost:${db.server.port}/test",
 			"username=sa",

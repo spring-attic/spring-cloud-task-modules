@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 the original author or authors.
+ * Copyright 2015-2016 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,13 @@
 
 package org.springframework.cloud.task.timestamp;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Rule;
 import org.junit.Test;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.OutputCapture;
-import org.springframework.cloud.task.repository.TaskExplorer;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.data.domain.PageRequest;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 
 /**
  * Verifies that the Task Application outputs the correct task log entries.
@@ -42,19 +38,36 @@ public class TaskApplicationTests {
 	public void testTimeStampApp() throws Exception {
 		final String TEST_DATE_DOTS = ".......";
 		final String CREATE_TASK_MESSAGE = "Creating: TaskExecution{executionId=";
-		final String UPDATE_TASK_MESSAGE = "Updating: TaskExecution with executionId=1 with the following";
-		String[] args = { "--format=yyyy" + TEST_DATE_DOTS,
-			"--spring.cloud.task.closecontext.enable=false"};
+		// with multiple tests can't really track full executionId
+		final String UPDATE_TASK_MESSAGE = "Updating: TaskExecution with executionId=";
+		String[] args = { "--format=yyyy" + TEST_DATE_DOTS, "--spring.cloud.task.closecontext.enable=false" };
 
-		ConfigurableApplicationContext applicationContext = SpringApplication.run(TaskApplication.class, args);
-
-		TaskExplorer taskExplorer = applicationContext.getBean(TaskExplorer.class);
-
-		assertEquals(0, (int) taskExplorer.findTaskExecutionsByName("timestamp", new PageRequest(0, 10)).getContent().get(0).getExitCode());
+		assertEquals(0, SpringApplication.exit(SpringApplication
+				.run(TaskApplication.class, args)));
 
 		String output = this.outputCapture.toString();
 		assertTrue("Unable to find the timestamp: " + output,
 				output.contains(TEST_DATE_DOTS));
+		assertTrue("Test results do not show create task message: " + output,
+				output.contains(CREATE_TASK_MESSAGE));
+		assertTrue("Test results do not show success message: " + output,
+				output.contains(UPDATE_TASK_MESSAGE));
+	}
+
+	@Test
+	public void testTimeStampAppRepeat() throws Exception {
+		final String TEST_SLEEP = "Sleeping";
+		final String CREATE_TASK_MESSAGE = "Creating: TaskExecution{executionId=";
+		// with multiple tests can't really track full executionId
+		final String UPDATE_TASK_MESSAGE = "Updating: TaskExecution with executionId=";
+		String[] args = { "--repeat=3", "--spring.cloud.task.closecontext.enable=false" };
+
+		assertEquals(0, SpringApplication.exit(SpringApplication
+				.run(TaskApplication.class, args)));
+
+		String output = this.outputCapture.toString();
+		assertTrue("Unable to find the sleep message: " + output,
+				output.contains(TEST_SLEEP));
 		assertTrue("Test results do not show create task message: " + output,
 				output.contains(CREATE_TASK_MESSAGE));
 		assertTrue("Test results do not show success message: " + output,
