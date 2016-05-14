@@ -1,12 +1,5 @@
-== Spring Cloud Task Modules image:https://build.spring.io/plugins/servlet/buildStatusImage/SCT-SM[Build Status, link=https://build.spring.io/browse/SCT-SM] image:https://badge.waffle.io/spring-cloud/spring-cloud-task-modules.svg?label=ready&title=Ready[Stories Ready, link=http://waffle.io/spring-cloud/spring-cloud-task-modules] image:https://badge.waffle.io/spring-cloud/spring-cloud-task-modules.svg?label=In%20Progress&title=In%20Progress[Stores In Progress, link=http://waffle.io/spring-cloud/spring-cloud-task-modules]
+= PLEASE NOTE: This project is no longer actively developed.
 
-This project provides a collection of task for common cases.  They can be run on their own or orchestrated via Spring Cloud Data Flow.
+The contents of this repository have been moved over to https://github.com/spring-cloud/spring-cloud-task-app-starters. The app-starters repository produces Maven and Docker artifacts.  
 
-=== Building
-
-Clone the repo and type
-
-----
-$ ./mvnw clean package
-----
-
+Please refer to the app-starters repository for more information.
