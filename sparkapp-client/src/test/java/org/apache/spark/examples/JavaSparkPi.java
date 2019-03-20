@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * NOTE: Copied from the Apache Spark (http://spark.apache.org/) source code since
+ * NOTE: Copied from the Apache Spark (https://spark.apache.org/) source code since
  * this class is not available in the Maven Central repo.
  */
 
