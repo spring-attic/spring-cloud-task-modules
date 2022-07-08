@@ -1,3 +1,5 @@
+# spring-cloud-task-modules is no longer actively maintained by VMware, Inc.
+
 = PLEASE NOTE: This project is no longer actively developed.
 
 The contents of this repository have been moved over to https://github.com/spring-cloud/spring-cloud-task-app-starters. The app-starters repository produces Maven and Docker artifacts.  
